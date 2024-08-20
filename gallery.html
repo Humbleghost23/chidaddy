@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>CHIDADI-|-CONCEPT - Gallery</title>
+    <style>
+      /* Page styling */
+      body {
+        background-color: #FFE4B5; /* Light orange color */
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .gallery__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .gallery__header {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      /* Tab navigation styling */
+      .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #fff;
+        border-radius: 5px;
+        margin: 0 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .tab:hover, .tab.active {
+        background-color: #FF7F50; /* Highlight color */
+        color: white;
+      }
+
+      /* Gallery grid styling */
+      .gallery__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+      }
+
+      .gallery__grid img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery__grid img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Hide gallery categories by default */
+      .gallery__category {
+        display: none;
+      }
+
+      /* Show the active category */
+      .gallery__category.active {
+        display: grid;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header" id="home">
+      <nav>
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="index.html">
+              <img src="assets/logo-white.png" alt="logo" />
+            </a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="index.html#home">HOME</a></li>
+          <li><a href="index.html#about">ABOUT US</a></li>
+          <li><a href="index.html#service">SERVICES</a></li>
+          <li class="nav__logo">
+            <a href="index.html">
+              <img src="assets/logo-white.png" alt="logo" />
+            </a>
+          </li>
+          <li><a href="index.html#client">CLIENT</a></li>
+          <li><a href="index.html#blog">BLOG</a></li>
+          <li><a href="index.html#contact">CONTACT US</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="section__container gallery__container">
+      <h2 class="gallery__header">Our Complete Gallery</h2>
+
+      <!-- Tab navigation -->
+      <div class="tabs">
+        <div class="tab active" data-category="photography">Photography</div>
+        <div class="tab" data-category="360booth">360 Photo Booth</div>
+        <div class="tab" data-category="eventdecor">Event Decor</div>
+      </div>
+
+      <!-- Photography Gallery -->
+      <div class="gallery__grid gallery__category active" id="photography">
+
+        <img src="assets/photo12.jpg" alt="gallery" />
+        <img src="assets/photo15.jpg" alt="gallery" />
+        <img src="assets/photo16.jpg" alt="gallery" />
+        <img src="assets/decor1.jpg" alt="gallery" />
+        <img src="assets/decor5.jpg" alt="gallery" />
+      </div>
+
+      <!-- 360 Photo Booth Gallery -->
+      <div class="gallery__grid gallery__category" id="360booth">
+        <img src="assets/photo.jpg" alt="gallery" />
+        <img src="assets/photo10.jpg" alt="gallery" />
+        <img src="assets/photo11.jpg" alt="gallery" />
+      
+      </div>
+
+      <!-- Event Decor Gallery -->
+      <div class="gallery__grid gallery__category" id="eventdecor">
+        <img src="assets/photo.jpg" alt="gallery" />
+        <img src="assets/photo10.jpg" alt="gallery" />
+        <img src="assets/photo11.jpg" alt="gallery" />
+        <img src="assets/photo12.jpg" alt="gallery" />
+        <img src="assets/photo15.jpg" alt="gallery" />
+        <img src="assets/photo16.jpg" alt="gallery" />
+        <img src="assets/decor1.jpg" alt="gallery" />
+        <img src="assets/decor5.jpg" alt="gallery" />
+      </div>
+    </div>
+
+    <div class="footer__bar">
+      CHIDADI CONCEPT
+    </div>
+
+    <script>
+      // JavaScript to handle tab switching
+      const tabs = document.querySelectorAll('.tab');
+      const categories = document.querySelectorAll('.gallery__category');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remove active class from all tabs
+          tabs.forEach(t => t.classList.remove('active'));
+          // Add active class to the clicked tab
+          this.classList.add('active');
+
+          // Hide all categories
+          categories.forEach(category => category.classList.remove('active'));
+          // Show the selected category
+          document.getElementById(this.getAttribute('data-category')).classList.add('active');
+        });
+      });
+    </script>
+  </body>
+</html>
