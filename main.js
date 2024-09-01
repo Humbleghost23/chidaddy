@@ -20,6 +20,7 @@ const scrollRevealOption = {
   duration: 1000,
 };
 
+
 ScrollReveal().reveal(".about__container .section__header", {
   ...scrollRevealOption,
 });
@@ -75,4 +76,25 @@ Array.from(instagram.children).forEach((item) => {
   const duplicateNode = item.cloneNode(true);
   duplicateNode.setAttribute("aria-hidden", true);
   instagram.appendChild(duplicateNode);
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Create the ribbon element
+  const ribbon = document.createElement('div');
+  ribbon.classList.add('ribbon');
+  document.body.appendChild(ribbon);
+
+  // Function to activate ribbon animation
+  function activateRibbon() {
+    ribbon.classList.add('active');
+    setTimeout(() => {
+      ribbon.classList.remove('active');
+    }, 2000); // Duration matches the ribbon animation
+  }
+
+  // Add click event listeners to all links
+  document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', activateRibbon);
+  });
 });
